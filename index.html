@@ -984,12 +984,33 @@
       margin-bottom: 8px;
     }
 
+    /* ── BARE-BONES BUILD ── */
+    #bare-build { margin-top:8px; border-radius:10px; overflow:hidden; border:1px dashed rgba(255,255,255,0.12); }
+    .bb-inner { padding:28px 26px; }
+    .bb-disclaimer { font-size:11px; line-height:1.5; opacity:0.6; margin:6px 0 14px; max-width:560px; }
+    .bb-section { padding:12px 0; }
+    .bb-section-name { font-size:13px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px; }
+    .bb-divider { height:1px; width:100%; margin-bottom:8px; }
+    .bb-placeholder { height:8px; border-radius:4px; width:70%; opacity:0.35; }
+
+    /* ── COMPARISON SLIDE ── */
+    #compare-slide { margin-top:8px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.03); }
+    .cmp-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .cmp-col { padding:22px 24px; }
+    .cmp-col:first-child { border-right:1px solid rgba(255,255,255,0.08); }
+    .cmp-col-title { font-size:14px; font-weight:700; margin-bottom:14px; letter-spacing:-0.01em; }
+    .cmp-row { font-size:12px; line-height:1.5; padding:7px 0; border-top:1px solid rgba(255,255,255,0.05); }
+    .cmp-row-label { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:0.4; margin-bottom:2px; }
+    .cmp-footer { padding:14px 24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; font-weight:500; text-align:center; opacity:0.75; }
+
     @media (max-width: 700px) {
       .project-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .snapshot-grid { grid-template-columns: 1fr; }
       .kchip { min-width: 0; }
       .intake-inner { padding: 24px 20px 28px; }
+      .cmp-grid { grid-template-columns: 1fr; }
+      .cmp-col:first-child { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
     }
   </style>
 </head>
@@ -1446,6 +1467,12 @@
           </div>
         </div>
 
+        <div class="lp-label" style="margin-top:24px;">Bare-Bones Build</div>
+        <div id="bare-build"></div>
+
+        <div class="lp-label" style="margin-top:24px;">webdev-powerhouse vs ui-ux-pro-max</div>
+        <div id="compare-slide"></div>
+
         <div class="snapshot-actions">
           <button class="snapshot-restart" onclick="restartIntake()">← Start over</button>
           <button class="snapshot-cta" onclick="doTab('i')">See the hero demo →</button>
@@ -1819,6 +1846,8 @@
       document.getElementById('snapshot-panel').classList.add('visible');
 
       renderLivePreview();
+      renderBareBuild();
+      renderCompareSlide();
     }
 
     function isLightColor(hex) {
@@ -1874,6 +1903,63 @@
       bar.textContent = motion.name + ' · ' + motion.role;
       bar.style.color = headlineColor;
       bar.style.borderTop = '1px solid ' + motionBorder;
+    }
+
+    function renderBareBuild() {
+      var colors = pickColors(selectedKeywords);
+      var type = TYPE_MAP[selectedType] || TYPE_MAP['Other'];
+
+      var bgColor = colors[0].bg;
+      var accentColor = colors[1] ? colors[1].bg : '#7b55d4';
+      var isDarkBg = !isLightColor(bgColor);
+      var headlineColor = isDarkBg ? 'rgba(255,255,255,0.92)' : '#111111';
+      var bodyColor     = isDarkBg ? 'rgba(255,255,255,0.5)'  : '#555555';
+      var dividerColor  = isDarkBg ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.14)';
+
+      var sections = selectedFeatures.length > 0
+        ? selectedFeatures
+        : ['Hero / Above-the-fold','Feature / Services cards','CTA / Contact section','Footer'];
+
+      var disclaimer = '⚠ Limited preview — this is the bare minimum you can build with webdev-powerhouse alone (structure + motion + stack). Visual design polish, color systems, and UX rules come from pairing it with ui-ux-pro-max.';
+
+      var html = '<div class="bb-inner" style="background:' + bgColor + '">';
+      html += '<div class="bb-disclaimer" style="color:' + bodyColor + '">' + disclaimer + '</div>';
+      html += '<div style="font-size:18px;font-weight:700;letter-spacing:-0.02em;color:' + headlineColor + ';">' + type.heading + '</div>';
+      sections.forEach(function(s) {
+        html += '<div class="bb-section">';
+        html += '<div class="bb-section-name" style="color:' + headlineColor + '">' + s + '</div>';
+        html += '<div class="bb-divider" style="background:' + dividerColor + '"></div>';
+        html += '<div class="bb-placeholder" style="background:' + accentColor + '"></div>';
+        html += '</div>';
+      });
+      html += '</div>';
+
+      document.getElementById('bare-build').innerHTML = html;
+    }
+
+    function renderCompareSlide() {
+      var rows = [
+        { label: 'Core job',  a: 'Code generation + animation',        b: 'Design decisions + UX rules' },
+        { label: 'Output',    a: 'Production Next.js/GSAP/Framer code', b: 'Style, palette, font, UX guidance (no code)' },
+        { label: 'Strength',  a: 'Motion, stack, real case studies',   b: '161 palettes · 57 font pairs · 99 UX rules' },
+        { label: 'Coverage',  a: 'How to build it',                    b: 'What it should look like' },
+        { label: 'Best used', a: 'After design direction is set',      b: 'Before any code is written' },
+        { label: 'Together',  a: 'Builds the thing',                   b: 'Decides how the thing looks' }
+      ];
+
+      function col(title, key) {
+        var h = '<div class="cmp-col"><div class="cmp-col-title">' + title + '</div>';
+        rows.forEach(function(r) {
+          h += '<div class="cmp-row"><div class="cmp-row-label">' + r.label + '</div>' + r[key] + '</div>';
+        });
+        h += '</div>';
+        return h;
+      }
+
+      var html = '<div class="cmp-grid">' + col('webdev-powerhouse', 'a') + col('ui-ux-pro-max', 'b') + '</div>';
+      html += '<div class="cmp-footer">Pair both: ui-ux-pro-max sets direction → webdev-powerhouse builds it.</div>';
+
+      document.getElementById('compare-slide').innerHTML = html;
     }
   </script>
 </body>
