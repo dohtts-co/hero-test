@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Section — Basic vs Improved | webdev-powerhouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: #f0efeb;
+      color: #1a1a18;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-title {
+      font-size: 13px;
+      color: #888;
+      font-weight: 400;
+    }
+
+    .page-title code {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      background: #e4e4e0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #555;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto 12px;
+    }
+
+    .tab-group {
+      display: flex;
+    }
+
+    .tab-btn {
+      padding: 7px 18px;
+      font-size: 13px;
+      font-family: inherit;
+      background: transparent;
+      cursor: pointer;
+      color: #666;
+      border: 1px solid #d0d0cc;
+      font-weight: 400;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .tab-btn:first-child {
+      border-radius: 8px 0 0 8px;
+      border-right: none;
+    }
+
+    .tab-btn:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .replay-btn {
+      font-size: 12px;
+      color: #666;
+      background: transparent;
+      border: 1px solid #d0d0cc;
+      border-radius: 8px;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .replay-btn:hover { background: #e8e8e4; }
+
+    .browser-frame {
+      max-width: 860px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      border: 1px solid #d8d8d4;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .browser-chrome {
+      background: #ebebeb;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #d8d8d4;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-r { background: #ff5f56; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #27c93f; }
+
+    .url-bar {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .url-bar span {
+      background: #fff;
+      border: 1px solid #d0d0cc;
+      border-radius: 6px;
+      padding: 3px 16px;
+      font-size: 12px;
+      color: #888;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    /* ── BASIC HERO ── */
+    .hero-basic {
+      background: #f9f9f7;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 32px;
+    }
+
+    .hero-basic .eyebrow {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .hero-basic h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #111;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero-basic p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.65;
+      max-width: 420px;
+      margin-bottom: 28px;
+    }
+
+    .hero-basic .cta-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-primary-basic {
+      padding: 10px 24px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn-outline-basic {
+      padding: 10px 24px;
+      background: #fff;
+      color: #111;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* ── IMPROVED HERO ── */
+    .hero-improved {
+      display: none;
+      position: relative;
+      background: #09091a;
+      height: 520px;
+      overflow: hidden;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 32px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    #o1 {
+      left: 5%;
+      top: 3%;
+      width: 380px;
+      height: 380px;
+      background: rgba(88, 42, 230, 0.38);
+      filter: blur(100px);
+    }
+
+    #o2 {
+      right: 2%;
+      top: -4%;
+      width: 320px;
+      height: 320px;
+      background: rgba(210, 44, 148, 0.28);
+      filter: blur(85px);
+    }
+
+    #o3 {
+      bottom: 3%;
+      left: 22%;
+      width: 280px;
+      height: 280px;
+      background: rgba(44, 110, 228, 0.2);
+      filter: blur(75px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #imp-eyebrow {
+      font-size: 11px;
+      color: rgba(140, 148, 200, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 18px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .imp-headline {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .word-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .iw {
+      display: inline-block;
+      transform: translateY(110%);
+    }
+
+    #imp-sub {
+      font-size: 16px;
+      color: rgba(170, 178, 215, 0.85);
+      line-height: 1.68;
+      max-width: 400px;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    #imp-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .btn-primary-imp {
+      padding: 11px 30px;
+      background: #fff;
+      color: #09091a;
+      border: none;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-primary-imp:hover { background: rgba(255,255,255,0.9); }
+
+    .btn-outline-imp {
+      padding: 11px 30px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-outline-imp:hover { background: rgba(255,255,255,0.08); }
+
+    #imp-scroll {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      opacity: 0;
+    }
+
+    #imp-scroll span {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.22);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    #imp-scroll .scroll-line {
+      width: 1px;
+      height: 26px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent);
+    }
+
+    /* ── ANNOTATIONS ── */
+    .annotations {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .annotations-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .annotations-label code {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      background: #e4e4e0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #555;
+    }
+
+    .annotation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .annotation-card {
+      background: #fff;
+      border: 1px solid #e0e0dc;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .annotation-tag {
+      font-size: 11px;
+      background: #e8f0fe;
+      color: #3b5bdb;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 7px;
+      font-weight: 500;
+    }
+
+    .annotation-card p {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.55;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .iw, #imp-eyebrow, #imp-sub, #imp-cta, #imp-scroll {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <p class="page-title">Built with <code>webdev-powerhouse</code> skill · WEBDEVAI.md stack</p>
+  </div>
+
+  <div class="controls">
+    <div class="tab-group">
+      <button class="tab-btn active" id="tb-b" onclick="doTab('b')">Basic</button>
+      <button class="tab-btn" id="tb-i" onclick="doTab('i')">Improved ✦</button>
+    </div>
+    <button class="replay-btn" id="rbtn" onclick="doReplay()">
+      ↺ Replay animation
+    </button>
+  </div>
+
+  <div class="browser-frame">
+    <div class="browser-chrome">
+      <div class="browser-dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="url-bar"><span>localhost:3000</span></div>
+    </div>
+
+    <!-- BASIC HERO -->
+    <div class="hero-basic" id="vb">
+      <p class="eyebrow">Creative Agency · Est. 2024</p>
+      <h1>We Build<br>Digital<br>Experiences</h1>
+      <p>We craft immersive digital experiences that merge bold design with precise engineering — built to convert, built to last.</p>
+      <div class="cta-group">
+        <button class="btn-primary-basic">See Our Work</button>
+        <button class="btn-outline-basic">Get In Touch</button>
+      </div>
+    </div>
+
+    <!-- IMPROVED HERO -->
+    <div class="hero-improved" id="vi">
+      <div class="orb" id="o1"></div>
+      <div class="orb" id="o2"></div>
+      <div class="orb" id="o3"></div>
+
+      <div class="hero-content">
+        <p id="imp-eyebrow">Creative Agency · Est. 2024</p>
+
+        <h1 class="imp-headline">
+          <span class="word-line"><span class="iw">We&nbsp;Build</span></span>
+          <span class="word-line"><span class="iw">Digital</span></span>
+          <span class="word-line"><span class="iw">Experiences</span></span>
+        </h1>
+
+        <p id="imp-sub">We craft immersive digital experiences that merge bold design with precise engineering — built to convert, built to last.</p>
+
+        <div id="imp-cta">
+          <button class="btn-primary-imp">See Our Work</button>
+          <button class="btn-outline-imp">Get In Touch</button>
+        </div>
+      </div>
+
+      <div id="imp-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOTATIONS -->
+  <div class="annotations">
+    <p class="annotations-label">What <code>webdev-powerhouse</code> added:</p>
+    <div class="annotation-grid">
+      <div class="annotation-card">
+        <div class="annotation-tag">§12 · OKLCH Color</div>
+        <p>Aurora mesh background — perceptually uniform blobs that never turn muddy when overlapping.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-tag">§6 · GSAP Timeline</div>
+        <p>Line-mask word reveal — each word slides from behind overflow:hidden, no basic opacity fade.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-tag">§13 · Motion</div>
+        <p>expo.out easing + 115ms stagger — Jakub Krehel layered reveal philosophy from WEBDEVAI.md.</p>
+      </div>
+      <div class="annotation-card">
+        <div class="annotation-tag">Advanced Option</div>
+        <p>lerp-smoothed mouse parallax on orbs — move your cursor over the hero to see it live.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function doTab(t) {
+      var vb = document.getElementById('vb');
+      var vi = document.getElementById('vi');
+      var tbb = document.getElementById('tb-b');
+      var tbi = document.getElementById('tb-i');
+      var rb = document.getElementById('rbtn');
+
+      if (t === 'b') {
+        vb.style.display = 'flex';
+        vi.style.display = 'none';
+        tbb.classList.add('active');
+        tbi.classList.remove('active');
+        rb.style.display = 'none';
+      } else {
+        vb.style.display = 'none';
+        vi.style.display = 'flex';
+        tbi.classList.add('active');
+        tbb.classList.remove('active');
+        rb.style.display = 'flex';
+        doReplay();
+        initParallax();
+      }
+    }
+
+    function doReplay() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var eyebrow = document.getElementById('imp-eyebrow');
+      var words = document.querySelectorAll('.iw');
+      var sub = document.getElementById('imp-sub');
+      var cta = document.getElementById('imp-cta');
+      var scroll = document.getElementById('imp-scroll');
+
+      function rst(el, props) {
+        el.style.transition = 'none';
+        Object.keys(props).forEach(function(k) { el.style[k] = props[k]; });
+      }
+
+      if (prefersReduced) {
+        [eyebrow, sub, cta, scroll].forEach(function(el) {
+          el.style.opacity = '1';
+          el.style.transform = el === scroll ? 'translateX(-50%)' : 'translateY(0)';
+        });
+        words.forEach(function(w) { w.style.transform = 'translateY(0%)'; });
+        return;
+      }
+
+      rst(eyebrow, { opacity: '0', transform: 'translateY(16px)' });
+      words.forEach(function(w) { rst(w, { transform: 'translateY(110%)' }); });
+      rst(sub, { opacity: '0', transform: 'translateY(20px)' });
+      rst(cta, { opacity: '0', transform: 'translateY(16px)' });
+      rst(scroll, { opacity: '0' });
+
+      eyebrow.getBoundingClientRect();
+
+      function anim(el, props, delay, dur) {
+        setTimeout(function() {
+          el.style.transition = 'all ' + (dur || 0.6) + 's cubic-bezier(0.16,1,0.3,1)';
+          Object.keys(props).forEach(function(k) { el.style[k] = props[k]; });
+        }, delay);
+      }
+
+      anim(eyebrow, { opacity: '1', transform: 'translateY(0px)' }, 80, 0.6);
+
+      words.forEach(function(w, i) {
+        setTimeout(function() {
+          w.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)';
+          w.style.transform = 'translateY(0%)';
+        }, 200 + i * 115);
+      });
+
+      anim(sub, { opacity: '1', transform: 'translateY(0px)' }, 590, 0.65);
+      anim(cta, { opacity: '1', transform: 'translateY(0px)' }, 760, 0.5);
+      anim(scroll, { opacity: '1' }, 940, 0.4);
+    }
+
+    var parallaxReady = false;
+
+    function initParallax() {
+      if (parallaxReady) return;
+      parallaxReady = true;
+
+      var hero = document.getElementById('vi');
+      var o1 = document.getElementById('o1');
+      var o2 = document.getElementById('o2');
+      if (!hero || !o1 || !o2) return;
+
+      var tx1 = 0, ty1 = 0, tx2 = 0, ty2 = 0;
+      var cx1 = 0, cy1 = 0, cx2 = 0, cy2 = 0;
+
+      hero.addEventListener('mousemove', function(e) {
+        var r = hero.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) / r.width;
+        var y = (e.clientY - r.top - r.height / 2) / r.height;
+        tx1 = x * 60; ty1 = y * 42;
+        tx2 = -x * 36; ty2 = -y * 28;
+      });
+
+      hero.addEventListener('mouseleave', function() {
+        tx1 = 0; ty1 = 0; tx2 = 0; ty2 = 0;
+      });
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function tick() {
+        cx1 = lerp(cx1, tx1, 0.045); cy1 = lerp(cy1, ty1, 0.045);
+        cx2 = lerp(cx2, tx2, 0.028); cy2 = lerp(cy2, ty2, 0.028);
+        o1.style.transform = 'translate(' + cx1.toFixed(1) + 'px,' + cy1.toFixed(1) + 'px)';
+        o2.style.transform = 'translate(' + cx2.toFixed(1) + 'px,' + cy2.toFixed(1) + 'px)';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    }
+  </script>
+</body>
+</html>
