@@ -63,8 +63,8 @@
       transition: background 0.15s, color 0.15s;
     }
 
-    .tab-btn:first-child { border-radius: 8px 0 0 8px; border-right: none; }
-    .tab-btn:nth-child(2) { border-right: none; }
+    .tab-btn:first-child { border-radius: 8px 0 0 8px; }
+    .tab-btn:not(:last-child) { border-right: none; }
     .tab-btn:last-child { border-radius: 0 8px 8px 0; }
 
     .tab-btn.active { background: #fff; color: #111; font-weight: 500; }
@@ -1003,6 +1003,37 @@
     .cmp-row-label { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:0.4; margin-bottom:2px; }
     .cmp-footer { padding:14px 24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; font-weight:500; text-align:center; opacity:0.75; }
 
+    /* ── LIVE PREVIEW ANIMATIONS ── */
+    #live-preview { position: relative; }
+    .lp-scrub { position:absolute; top:0; left:0; height:3px; width:100%; transform-origin:left center; transform:scaleX(0); display:none; z-index:5; }
+    @keyframes lp-scrub { 0%{transform:scaleX(0);} 100%{transform:scaleX(1);} }
+    @keyframes lp-morph { 0%{opacity:0;transform:scale(0.98);} 100%{opacity:1;transform:scale(1);} }
+    @keyframes lp-spacing { 0%{letter-spacing:-0.04em;opacity:0;} 100%{letter-spacing:0.18em;opacity:0.5;} }
+    @keyframes lp-bob-kf { 0%,100%{transform:translateY(-4px);} 50%{transform:translateY(4px);} }
+    .lp-micro .lp-btn-filled, .lp-micro .lp-btn-ghost { transition: transform 0.15s ease; }
+    .lp-micro .lp-btn-filled:hover, .lp-micro .lp-btn-ghost:hover { transform: translateY(-2px); }
+    .lp-micro .lp-btn-filled:active, .lp-micro .lp-btn-ghost:active { transform: scale(0.96); }
+    .lp-anim-caption-row { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px; }
+    .lp-anim-caption { font-size:11px; color:rgba(140,148,200,0.75); line-height:1.4; }
+    .lp-replay-btn { font-size:11px; font-family:inherit; cursor:pointer; background:transparent; border:1px solid rgba(255,255,255,0.14); color:rgba(255,255,255,0.6); border-radius:6px; padding:4px 12px; flex-shrink:0; transition:background 0.15s; }
+    .lp-replay-btn:hover { background:rgba(255,255,255,0.06); }
+
+    /* ── COMPARE TAB PANEL ── */
+    #compare-wrap { display:none; }
+    .compare-panel { max-width:900px; margin:0 auto 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.10); background:#09091a; box-shadow:0 2px 40px rgba(0,0,0,0.22); overflow:hidden; }
+    .compare-panel-inner { padding:36px 40px 40px; }
+    .compare-panel-header { font-size:20px; font-weight:700; color:#fff; letter-spacing:-0.02em; margin-bottom:6px; }
+    .compare-panel-sub { font-size:13px; color:rgba(170,178,215,0.7); margin-bottom:24px; }
+    .cmp2-grid { display:grid; grid-template-columns:150px 1fr 1fr; border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; }
+    .cmp2-cell { padding:13px 16px; border-top:1px solid rgba(255,255,255,0.06); font-size:13px; color:rgba(255,255,255,0.8); line-height:1.45; }
+    .cmp2-head { background:rgba(140,148,220,0.12); font-weight:700; color:#fff; border-top:none; }
+    .cmp2-label { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(140,148,200,0.6); font-weight:600; display:flex; align-items:center; }
+    .cmp2-footer { margin-top:18px; text-align:center; font-size:13px; font-weight:500; color:rgba(200,206,255,0.85); }
+    .cmp2-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
+    .cmp2-card { border-radius:10px; padding:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); }
+    .cmp2-card-title { font-size:14px; font-weight:700; color:#fff; margin-bottom:6px; }
+    .cmp2-card-desc { font-size:12px; color:rgba(170,178,215,0.7); line-height:1.5; }
+
     @media (max-width: 700px) {
       .project-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1011,6 +1042,11 @@
       .intake-inner { padding: 24px 20px 28px; }
       .cmp-grid { grid-template-columns: 1fr; }
       .cmp-col:first-child { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+      .cmp2-grid { grid-template-columns: 1fr 1fr; }
+      .cmp2-grid > .cmp2-head:first-child { display: none; }
+      .cmp2-grid > .cmp2-label { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+      .cmp2-cards { grid-template-columns: 1fr; }
+      .compare-panel-inner { padding: 24px 20px 28px; }
     }
   </style>
 </head>
@@ -1025,6 +1061,7 @@
       <button class="tab-btn active" id="tb-b" onclick="doTab('b')">Basic</button>
       <button class="tab-btn" id="tb-i" onclick="doTab('i')">Improved ✦</button>
       <button class="tab-btn" id="tb-s" onclick="doTab('s')">Skill Intake ✦</button>
+      <button class="tab-btn" id="tb-c" onclick="doTab('c')">Compare ✦</button>
     </div>
     <button class="replay-btn" id="rbtn" onclick="doReplay()">
       ↺ Replay animation
@@ -1455,16 +1492,21 @@
 
         <div class="lp-label" style="margin-top:20px;">Live Preview</div>
         <div id="live-preview">
+          <div class="lp-scrub" id="lp-scrub"></div>
           <div class="lp-inner" id="lp-inner">
             <div class="lp-eyebrow" id="lp-eyebrow"></div>
             <div class="lp-headline" id="lp-headline"></div>
             <div class="lp-descriptor" id="lp-descriptor"></div>
-            <div class="lp-buttons">
+            <div class="lp-buttons" id="lp-buttons">
               <button class="lp-btn-filled" id="lp-btn-filled">Get Started</button>
               <button class="lp-btn-ghost" id="lp-btn-ghost">See Our Work</button>
             </div>
             <div class="lp-motion-bar" id="lp-motion-bar"></div>
           </div>
+        </div>
+        <div class="lp-anim-caption-row">
+          <span class="lp-anim-caption" id="lp-anim-caption"></span>
+          <button class="lp-replay-btn" onclick="playPreviewAnimations()">↻ Replay</button>
         </div>
 
         <div class="lp-label" style="margin-top:24px;">Bare-Bones Build</div>
@@ -1512,25 +1554,51 @@
     </div>
   </div>
 
+  <!-- COMPARE TAB -->
+  <div id="compare-wrap">
+    <div class="compare-panel">
+      <div class="compare-panel-inner">
+        <div class="compare-panel-header">webdev-powerhouse vs ui-ux-pro-max</div>
+        <div class="compare-panel-sub">Two skills, two jobs. One builds, one designs — strongest when paired.</div>
+        <div class="cmp2-grid" id="compare-table"></div>
+        <div class="cmp2-footer">Pair both: ui-ux-pro-max sets direction → webdev-powerhouse builds it.</div>
+        <div class="cmp2-cards">
+          <div class="cmp2-card">
+            <div class="cmp2-card-title">webdev-powerhouse = builder</div>
+            <div class="cmp2-card-desc">Production code + animation. Next.js 15, GSAP, Framer Motion, R3F. Turns a design direction into a working, animated site.</div>
+          </div>
+          <div class="cmp2-card">
+            <div class="cmp2-card-title">ui-ux-pro-max = designer</div>
+            <div class="cmp2-card-desc">Style + UX rules. 161 palettes, 57 font pairings, 99 UX guidelines. Decides what the thing should look like before code is written.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ── TAB SWITCHER ── */
     function doTab(t) {
       var bw = document.getElementById('browser-wrap');
       var iw = document.getElementById('intake-wrap');
       var aw = document.getElementById('annotations-wrap');
+      var cw = document.getElementById('compare-wrap');
       var rb = document.getElementById('rbtn');
       var tbb = document.getElementById('tb-b');
       var tbi = document.getElementById('tb-i');
       var tbs = document.getElementById('tb-s');
+      var tbc = document.getElementById('tb-c');
       var vb = document.getElementById('vb');
       var vi = document.getElementById('vi');
 
       tbb.classList.remove('active');
       tbi.classList.remove('active');
       tbs.classList.remove('active');
+      tbc.classList.remove('active');
       bw.style.display = 'none';
       iw.style.display = 'none';
       aw.style.display = 'none';
+      cw.style.display = 'none';
       rb.style.display = 'none';
 
       if (t === 'b') {
@@ -1548,6 +1616,10 @@
         rb.style.display = 'flex';
         doReplay();
         initParallax();
+      } else if (t === 'c') {
+        cw.style.display = 'block';
+        tbc.classList.add('active');
+        renderCompareTab();
       } else {
         iw.style.display = 'block';
         tbs.classList.add('active');
@@ -1903,6 +1975,188 @@
       bar.textContent = motion.name + ' · ' + motion.role;
       bar.style.color = headlineColor;
       bar.style.borderTop = '1px solid ' + motionBorder;
+
+      headline.setAttribute('data-base', type.heading + ' — Heading Style');
+      playPreviewAnimations();
+    }
+
+    /* ── LIVE PREVIEW ANIMATION ENGINE ── */
+    var previewHandlers = [];
+    var previewTimeouts = [];
+    var previewRAF = null;
+
+    function clearPreviewAnims() {
+      if (previewRAF) { cancelAnimationFrame(previewRAF); previewRAF = null; }
+      previewHandlers.forEach(function(h) { h.el.removeEventListener(h.type, h.fn); });
+      previewHandlers = [];
+      previewTimeouts.forEach(function(t) { clearTimeout(t); });
+      previewTimeouts = [];
+
+      var inner = document.getElementById('lp-inner');
+      inner.style.animation = '';
+      inner.classList.remove('lp-micro');
+
+      ['lp-eyebrow','lp-headline','lp-descriptor','lp-buttons'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.animation = '';
+        el.style.opacity = '';
+        el.style.transform = '';
+        el.style.transition = '';
+        el.style.transitionDelay = '';
+        el.style.clipPath = '';
+      });
+
+      var filled = document.getElementById('lp-btn-filled');
+      if (filled) { filled.style.transform = ''; filled.style.transition = ''; }
+
+      var scrub = document.getElementById('lp-scrub');
+      if (scrub) { scrub.style.display = 'none'; scrub.style.animation = ''; }
+    }
+
+    function playPreviewAnimations() {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var kws = selectedKeywords || [];
+      var has = function(k) { return kws.indexOf(k) > -1; };
+
+      var inner = document.getElementById('lp-inner');
+      var eyebrow = document.getElementById('lp-eyebrow');
+      var headline = document.getElementById('lp-headline');
+      var descriptor = document.getElementById('lp-descriptor');
+      var buttons = document.getElementById('lp-buttons');
+      var filled = document.getElementById('lp-btn-filled');
+      var scrub = document.getElementById('lp-scrub');
+      var caption = document.getElementById('lp-anim-caption');
+
+      clearPreviewAnims();
+
+      // restore headline plain text (word-line may have wrapped it on a prior run)
+      var baseHeadline = headline.getAttribute('data-base') || headline.textContent;
+      headline.innerHTML = baseHeadline;
+
+      var colors = pickColors(selectedKeywords);
+      var accent = colors[1] ? colors[1].bg : '#7b55d4';
+
+      var MOTION = ['Stagger Entrance','CSS Stagger','Word-line Reveal','Parallax','Magnetic Hover',
+        'Clip-path Reveal','Scroll Scrub','CSS Scroll Animation','Smooth Scroll','Page Transition',
+        'View Transitions','Motion-Led Branding','Micro-interactions'];
+      var active = MOTION.filter(has);
+      caption.textContent = active.length
+        ? 'Playing: ' + active.join(' · ')
+        : 'Playing: Clean fade-up (no motion keyword selected)';
+
+      if (reduced) {
+        [eyebrow, headline, descriptor, buttons].forEach(function(el) {
+          if (el) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none'; }
+        });
+        return;
+      }
+
+      var children = [eyebrow, headline, descriptor, buttons].filter(Boolean);
+      var headlineBusy = has('Word-line Reveal') || has('Clip-path Reveal');
+
+      // Word-line reveal
+      if (has('Word-line Reveal')) {
+        var words = baseHeadline.split(' ');
+        headline.innerHTML = words.map(function(w) {
+          return '<span style="display:inline-block;overflow:hidden;vertical-align:top;">' +
+                 '<span class="lp-iw" style="display:inline-block;transform:translateY(110%);">' + w + '</span></span>';
+        }).join(' ');
+        var iws = headline.querySelectorAll('.lp-iw');
+        iws.forEach(function(s, i) {
+          s.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+          s.style.transitionDelay = (i * 0.09) + 's';
+          requestAnimationFrame(function() { requestAnimationFrame(function() { s.style.transform = 'translateY(0)'; }); });
+        });
+      } else if (has('Clip-path Reveal')) {
+        headline.style.clipPath = 'inset(0 100% 0 0)';
+        headline.style.transition = 'clip-path 0.8s cubic-bezier(0.16,1,0.3,1)';
+        requestAnimationFrame(function() { requestAnimationFrame(function() { headline.style.clipPath = 'inset(0 0 0 0)'; }); });
+      }
+
+      // Stagger entrance
+      if (has('Stagger Entrance') || has('CSS Stagger')) {
+        children.forEach(function(el, i) {
+          if (el === headline && headlineBusy) return;
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(16px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+          el.style.transitionDelay = (i * 0.09) + 's';
+          requestAnimationFrame(function() { requestAnimationFrame(function() {
+            el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+          }); });
+        });
+      }
+
+      // Whole-hero inner animations (morph + bob can stack)
+      var innerAnims = [];
+      if (has('Page Transition') || has('View Transitions')) innerAnims.push('lp-morph 0.5s cubic-bezier(0.16,1,0.3,1)');
+      if (has('Smooth Scroll')) innerAnims.push('lp-bob-kf 3s ease-in-out infinite');
+      if (innerAnims.length) inner.style.animation = innerAnims.join(', ');
+
+      // Motion-led branding — eyebrow letter-spacing expand
+      if (has('Motion-Led Branding')) eyebrow.style.animation = 'lp-spacing 0.9s ease-out';
+
+      // Scroll scrub bar
+      if (has('Scroll Scrub') || has('CSS Scroll Animation')) {
+        scrub.style.display = 'block';
+        scrub.style.background = accent;
+        scrub.style.animation = 'lp-scrub 2s linear infinite';
+      }
+
+      // Micro-interactions
+      if (has('Micro-interactions')) inner.classList.add('lp-micro');
+
+      // Parallax (delayed start if an entrance anim is running so it doesn't snap)
+      if (has('Parallax')) {
+        var tx = 0, ty = 0, cx = 0, cy = 0;
+        var move = function(e) {
+          var r = inner.getBoundingClientRect();
+          tx = (e.clientX - r.left - r.width / 2) / r.width;
+          ty = (e.clientY - r.top - r.height / 2) / r.height;
+        };
+        var leave = function() { tx = 0; ty = 0; };
+        inner.addEventListener('mousemove', move); previewHandlers.push({ el: inner, type: 'mousemove', fn: move });
+        inner.addEventListener('mouseleave', leave); previewHandlers.push({ el: inner, type: 'mouseleave', fn: leave });
+        var lerp = function(a, b, t) { return a + (b - a) * t; };
+        var tick = function() {
+          cx = lerp(cx, tx, 0.06); cy = lerp(cy, ty, 0.06);
+          if (!headlineBusy) headline.style.transform = 'translate(' + (cx * 24).toFixed(1) + 'px,' + (cy * 16).toFixed(1) + 'px)';
+          descriptor.style.transform = 'translate(' + (cx * -14).toFixed(1) + 'px,' + (cy * -10).toFixed(1) + 'px)';
+          previewRAF = requestAnimationFrame(tick);
+        };
+        var startDelay = (has('Stagger Entrance') || has('CSS Stagger') || headlineBusy) ? 800 : 0;
+        previewTimeouts.push(setTimeout(tick, startDelay));
+      }
+
+      // Magnetic hover on the filled button
+      if (has('Magnetic Hover')) {
+        var mm = function(e) {
+          var r = filled.getBoundingClientRect();
+          var x = e.clientX - (r.left + r.width / 2);
+          var y = e.clientY - (r.top + r.height / 2);
+          filled.style.transition = 'transform 0.1s ease';
+          filled.style.transform = 'translate(' + (x * 0.3).toFixed(1) + 'px,' + (y * 0.4).toFixed(1) + 'px)';
+        };
+        var ml = function() {
+          filled.style.transition = 'transform 0.4s cubic-bezier(0.16,1,0.3,1)';
+          filled.style.transform = 'translate(0,0)';
+        };
+        filled.addEventListener('mousemove', mm); previewHandlers.push({ el: filled, type: 'mousemove', fn: mm });
+        filled.addEventListener('mouseleave', ml); previewHandlers.push({ el: filled, type: 'mouseleave', fn: ml });
+      }
+
+      // Default clean fade-up when no motion keyword chosen
+      if (!active.length) {
+        children.forEach(function(el) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(14px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+          requestAnimationFrame(function() { requestAnimationFrame(function() {
+            el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+          }); });
+        });
+      }
     }
 
     function renderBareBuild() {
@@ -1937,19 +2191,19 @@
       document.getElementById('bare-build').innerHTML = html;
     }
 
-    function renderCompareSlide() {
-      var rows = [
-        { label: 'Core job',  a: 'Code generation + animation',        b: 'Design decisions + UX rules' },
-        { label: 'Output',    a: 'Production Next.js/GSAP/Framer code', b: 'Style, palette, font, UX guidance (no code)' },
-        { label: 'Strength',  a: 'Motion, stack, real case studies',   b: '161 palettes · 57 font pairs · 99 UX rules' },
-        { label: 'Coverage',  a: 'How to build it',                    b: 'What it should look like' },
-        { label: 'Best used', a: 'After design direction is set',      b: 'Before any code is written' },
-        { label: 'Together',  a: 'Builds the thing',                   b: 'Decides how the thing looks' }
-      ];
+    var COMPARE_ROWS = [
+      { label: 'Core job',  a: 'Code generation + animation',        b: 'Design decisions + UX rules' },
+      { label: 'Output',    a: 'Production Next.js/GSAP/Framer code', b: 'Style, palette, font, UX guidance (no code)' },
+      { label: 'Strength',  a: 'Motion, stack, real case studies',   b: '161 palettes · 57 font pairs · 99 UX rules' },
+      { label: 'Coverage',  a: 'How to build it',                    b: 'What it should look like' },
+      { label: 'Best used', a: 'After design direction is set',      b: 'Before any code is written' },
+      { label: 'Together',  a: 'Builds the thing',                   b: 'Decides how the thing looks' }
+    ];
 
+    function renderCompareSlide() {
       function col(title, key) {
         var h = '<div class="cmp-col"><div class="cmp-col-title">' + title + '</div>';
-        rows.forEach(function(r) {
+        COMPARE_ROWS.forEach(function(r) {
           h += '<div class="cmp-row"><div class="cmp-row-label">' + r.label + '</div>' + r[key] + '</div>';
         });
         h += '</div>';
@@ -1960,6 +2214,18 @@
       html += '<div class="cmp-footer">Pair both: ui-ux-pro-max sets direction → webdev-powerhouse builds it.</div>';
 
       document.getElementById('compare-slide').innerHTML = html;
+    }
+
+    function renderCompareTab() {
+      var head = '<div class="cmp2-cell cmp2-head"></div>' +
+                 '<div class="cmp2-cell cmp2-head">webdev-powerhouse</div>' +
+                 '<div class="cmp2-cell cmp2-head">ui-ux-pro-max</div>';
+      var body = COMPARE_ROWS.map(function(r) {
+        return '<div class="cmp2-cell cmp2-label">' + r.label + '</div>' +
+               '<div class="cmp2-cell">' + r.a + '</div>' +
+               '<div class="cmp2-cell">' + r.b + '</div>';
+      }).join('');
+      document.getElementById('compare-table').innerHTML = head + body;
     }
   </script>
 </body>
