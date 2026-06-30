@@ -306,6 +306,31 @@
       margin-bottom: 10px;
     }
 
+    .annotations-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .annotations-head .annotations-label { margin-bottom: 0; }
+
+    .anno-toggle { display: inline-flex; border: 1px solid #d0d0cc; border-radius: 8px; overflow: hidden; }
+    .anno-toggle button {
+      font-size: 11px; font-family: inherit; cursor: pointer;
+      background: transparent; color: #777; border: none;
+      padding: 5px 13px; transition: background 0.15s, color 0.15s;
+    }
+    .anno-toggle button:first-child { border-right: 1px solid #d0d0cc; }
+    .anno-toggle button.active { background: #fff; color: #111; font-weight: 600; }
+
+    .anno-simple, .anno-tech { font-size: 12px; line-height: 1.55; }
+    .anno-tech { display: none; }
+    .annotation-card.show-tech .anno-simple { display: none; }
+    .annotation-card.show-tech .anno-tech { display: block; color: #666; }
+    .annotation-card .anno-simple { color: #555; }
+
     .annotations-label code {
       font-family: ui-monospace, monospace;
       font-size: 11px;
@@ -1565,23 +1590,33 @@
 
   <!-- ANNOTATIONS -->
   <div class="annotations" id="annotations-wrap">
-    <p class="annotations-label">What <code>webdev-powerhouse</code> added:</p>
+    <div class="annotations-head">
+      <p class="annotations-label">What <code>webdev-powerhouse</code> added:</p>
+      <div class="anno-toggle">
+        <button id="anno-simple-btn" class="active" onclick="setAnnoMode('simple')">Simple</button>
+        <button id="anno-tech-btn" onclick="setAnnoMode('tech')">Technical</button>
+      </div>
+    </div>
     <div class="annotation-grid">
       <div class="annotation-card">
         <div class="annotation-tag">§12 · OKLCH Color</div>
-        <p>Aurora mesh background — perceptually uniform blobs that never turn muddy when overlapping.</p>
+        <p class="anno-simple">Soft glowing colour blobs sit behind the text and blend smoothly so the background never looks muddy.</p>
+        <p class="anno-tech">Aurora mesh background — perceptually uniform OKLCH blobs that never turn muddy when overlapping.</p>
       </div>
       <div class="annotation-card">
         <div class="annotation-tag">§6 · GSAP Timeline</div>
-        <p>Line-mask word reveal — each word slides from behind overflow:hidden, no basic opacity fade.</p>
+        <p class="anno-simple">Each word of the headline slides up into view one after another, like a curtain lifting.</p>
+        <p class="anno-tech">Line-mask word reveal — each word slides from behind overflow:hidden, no basic opacity fade.</p>
       </div>
       <div class="annotation-card">
         <div class="annotation-tag">§13 · Motion</div>
-        <p>expo.out easing + 115ms stagger — Jakub Krehel layered reveal philosophy from WEBDEVAI.md.</p>
+        <p class="anno-simple">The pieces appear in a calm, ordered sequence instead of all popping in at once.</p>
+        <p class="anno-tech">expo.out easing + 115ms stagger — Jakub Krehel layered reveal philosophy from WEBDEVAI.md.</p>
       </div>
       <div class="annotation-card">
         <div class="annotation-tag">Advanced Option</div>
-        <p>lerp-smoothed mouse parallax on orbs — move your cursor over the hero to see it live.</p>
+        <p class="anno-simple">The background glow gently follows your mouse, giving the hero a sense of depth.</p>
+        <p class="anno-tech">lerp-smoothed mouse parallax on orbs — move your cursor over the hero to see it live.</p>
       </div>
     </div>
   </div>
@@ -1677,6 +1712,16 @@
         iw.style.display = 'block';
         tbs.classList.add('active');
       }
+    }
+
+    /* ── ANNOTATION SIMPLE / TECHNICAL TOGGLE ── */
+    function setAnnoMode(mode) {
+      var tech = mode === 'tech';
+      document.querySelectorAll('.annotation-card').forEach(function(c) {
+        c.classList.toggle('show-tech', tech);
+      });
+      document.getElementById('anno-simple-btn').classList.toggle('active', !tech);
+      document.getElementById('anno-tech-btn').classList.toggle('active', tech);
     }
 
     /* ── HERO ANIMATION ── */
