@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hero Section — Basic vs Improved | webdev-powerhouse</title>
+  <title>webdev-powerhouse · Skill Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,7 +19,7 @@
     }
 
     .page-header {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto 1.5rem;
       display: flex;
       justify-content: space-between;
@@ -45,13 +45,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto 12px;
     }
 
-    .tab-group {
-      display: flex;
-    }
+    .tab-group { display: flex; }
 
     .tab-btn {
       padding: 7px 18px;
@@ -65,20 +63,11 @@
       transition: background 0.15s, color 0.15s;
     }
 
-    .tab-btn:first-child {
-      border-radius: 8px 0 0 8px;
-      border-right: none;
-    }
+    .tab-btn:first-child { border-radius: 8px 0 0 8px; border-right: none; }
+    .tab-btn:nth-child(2) { border-right: none; }
+    .tab-btn:last-child { border-radius: 0 8px 8px 0; }
 
-    .tab-btn:last-child {
-      border-radius: 0 8px 8px 0;
-    }
-
-    .tab-btn.active {
-      background: #fff;
-      color: #111;
-      font-weight: 500;
-    }
+    .tab-btn.active { background: #fff; color: #111; font-weight: 500; }
 
     .replay-btn {
       font-size: 12px;
@@ -97,8 +86,9 @@
 
     .replay-btn:hover { background: #e8e8e4; }
 
+    /* ── BROWSER FRAME ── */
     .browser-frame {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto 16px;
       border-radius: 12px;
       border: 1px solid #d8d8d4;
@@ -115,26 +105,14 @@
       border-bottom: 1px solid #d8d8d4;
     }
 
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-    }
+    .browser-dots { display: flex; gap: 6px; }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-r { background: #ff5f56; }
     .dot-y { background: #ffbd2e; }
     .dot-g { background: #27c93f; }
 
-    .url-bar {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+    .url-bar { flex: 1; display: flex; justify-content: center; }
 
     .url-bar span {
       background: #fff;
@@ -183,10 +161,7 @@
       margin-bottom: 28px;
     }
 
-    .hero-basic .cta-group {
-      display: flex;
-      gap: 12px;
-    }
+    .hero-basic .cta-group { display: flex; gap: 12px; }
 
     .btn-primary-basic {
       padding: 10px 24px;
@@ -231,44 +206,15 @@
       will-change: transform;
     }
 
-    #o1 {
-      left: 5%;
-      top: 3%;
-      width: 380px;
-      height: 380px;
-      background: rgba(88, 42, 230, 0.38);
-      filter: blur(100px);
-    }
+    #o1 { left: 5%; top: 3%; width: 380px; height: 380px; background: rgba(88,42,230,0.38); filter: blur(100px); }
+    #o2 { right: 2%; top: -4%; width: 320px; height: 320px; background: rgba(210,44,148,0.28); filter: blur(85px); }
+    #o3 { bottom: 3%; left: 22%; width: 280px; height: 280px; background: rgba(44,110,228,0.2); filter: blur(75px); }
 
-    #o2 {
-      right: 2%;
-      top: -4%;
-      width: 320px;
-      height: 320px;
-      background: rgba(210, 44, 148, 0.28);
-      filter: blur(85px);
-    }
-
-    #o3 {
-      bottom: 3%;
-      left: 22%;
-      width: 280px;
-      height: 280px;
-      background: rgba(44, 110, 228, 0.2);
-      filter: blur(75px);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .hero-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
 
     #imp-eyebrow {
       font-size: 11px;
-      color: rgba(140, 148, 200, 0.85);
+      color: rgba(140,148,200,0.85);
       text-transform: uppercase;
       letter-spacing: 0.22em;
       margin-bottom: 18px;
@@ -285,19 +231,12 @@
       margin-bottom: 18px;
     }
 
-    .word-line {
-      display: block;
-      overflow: hidden;
-    }
-
-    .iw {
-      display: inline-block;
-      transform: translateY(110%);
-    }
+    .word-line { display: block; overflow: hidden; }
+    .iw { display: inline-block; transform: translateY(110%); }
 
     #imp-sub {
       font-size: 16px;
-      color: rgba(170, 178, 215, 0.85);
+      color: rgba(170,178,215,0.85);
       line-height: 1.68;
       max-width: 400px;
       margin-bottom: 28px;
@@ -331,8 +270,8 @@
     .btn-outline-imp {
       padding: 11px 30px;
       background: transparent;
-      color: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.22);
       border-radius: 999px;
       font-size: 14px;
       font-family: inherit;
@@ -355,24 +294,11 @@
       opacity: 0;
     }
 
-    #imp-scroll span {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.22);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-    }
-
-    #imp-scroll .scroll-line {
-      width: 1px;
-      height: 26px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent);
-    }
+    #imp-scroll span { font-size: 10px; color: rgba(255,255,255,0.22); text-transform: uppercase; letter-spacing: 0.22em; }
+    #imp-scroll .scroll-line { width: 1px; height: 26px; background: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent); }
 
     /* ── ANNOTATIONS ── */
-    .annotations {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    .annotations { max-width: 900px; margin: 0 auto; }
 
     .annotations-label {
       font-size: 12px;
@@ -413,10 +339,564 @@
       font-weight: 500;
     }
 
-    .annotation-card p {
+    .annotation-card p { font-size: 12px; color: #666; line-height: 1.55; }
+
+    /* ── INTAKE PANEL ── */
+    .intake-frame {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      overflow: hidden;
+      box-shadow: 0 2px 40px rgba(0,0,0,0.22);
+      background: #09091a;
+      position: relative;
+    }
+
+    /* Background orbs for intake */
+    .intake-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .intake-orb-1 { left: -80px; top: -80px; width: 360px; height: 360px; background: rgba(88,42,230,0.22); filter: blur(100px); }
+    .intake-orb-2 { right: -60px; bottom: -60px; width: 280px; height: 280px; background: rgba(210,44,148,0.16); filter: blur(80px); }
+
+    .intake-inner {
+      position: relative;
+      z-index: 1;
+      padding: 36px 40px 40px;
+    }
+
+    .intake-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .intake-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(140,148,200,0.9);
+      background: rgba(140,148,200,0.12);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(140,148,200,0.2);
+    }
+
+    .intake-title {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+    }
+
+    /* Step indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 36px;
+    }
+
+    .step-dot {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: default;
+    }
+
+    .step-dot-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 12px;
-      color: #666;
+      font-weight: 600;
+      color: rgba(255,255,255,0.25);
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .step-dot.active .step-dot-circle {
+      border-color: rgba(140,148,220,0.8);
+      background: rgba(140,148,220,0.15);
+      color: rgba(200,206,255,0.95);
+    }
+
+    .step-dot.done .step-dot-circle {
+      border-color: rgba(100,200,140,0.6);
+      background: rgba(100,200,140,0.1);
+      color: rgba(130,220,160,0.9);
+    }
+
+    .step-dot-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 400;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+
+    .step-dot.active .step-dot-label { color: rgba(200,206,255,0.85); font-weight: 500; }
+    .step-dot.done .step-dot-label { color: rgba(130,220,160,0.7); }
+
+    .step-line {
+      height: 1px;
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      margin: 0 16px;
+      min-width: 40px;
+    }
+
+    /* Step content panels */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    .step-heading {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .step-sub {
+      font-size: 14px;
+      color: rgba(170,178,215,0.7);
+      margin-bottom: 24px;
       line-height: 1.55;
+    }
+
+    /* Project type cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .project-card {
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 16px 14px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.03);
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+
+    .project-card:hover {
+      border-color: rgba(140,148,220,0.4);
+      background: rgba(140,148,220,0.07);
+    }
+
+    .project-card.selected {
+      border-color: rgba(140,148,220,0.75);
+      background: rgba(140,148,220,0.12);
+    }
+
+    .project-card-num {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 8px;
+      font-family: ui-monospace, monospace;
+    }
+
+    .project-card.selected .project-card-num { color: rgba(200,206,255,0.5); }
+
+    .project-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .project-card.selected .project-card-title { color: rgba(210,214,255,0.95); }
+
+    .project-card-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.5;
+    }
+
+    .project-card.selected .project-card-desc { color: rgba(190,196,240,0.55); }
+
+    /* Keyword chips */
+    .keyword-category { margin-bottom: 24px; }
+
+    .keyword-category-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(140,148,200,0.6);
+      margin-bottom: 4px;
+    }
+
+    .keyword-category-hint {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 12px;
+    }
+
+    .keyword-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .kchip {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      padding: 9px 13px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.03);
+      transition: all 0.16s ease;
+      user-select: none;
+      min-width: 130px;
+    }
+
+    .kchip:hover {
+      border-color: rgba(140,148,220,0.35);
+      background: rgba(140,148,220,0.07);
+    }
+
+    .kchip.selected {
+      border-color: rgba(140,148,220,0.7);
+      background: rgba(140,148,220,0.13);
+    }
+
+    .kchip-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      transition: color 0.16s;
+    }
+
+    .kchip.selected .kchip-name { color: rgba(210,214,255,0.95); }
+
+    .kchip-desc {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.45;
+      transition: color 0.16s;
+    }
+
+    .kchip.selected .kchip-desc { color: rgba(190,196,240,0.5); }
+
+    /* Feature checklist */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .fchip {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 10px 13px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.03);
+      transition: all 0.16s ease;
+      user-select: none;
+    }
+
+    .fchip:hover {
+      border-color: rgba(140,148,220,0.3);
+      background: rgba(140,148,220,0.06);
+    }
+
+    .fchip.selected {
+      border-color: rgba(140,148,220,0.65);
+      background: rgba(140,148,220,0.12);
+    }
+
+    .fchip-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.16s;
+    }
+
+    .fchip.selected .fchip-check {
+      background: rgba(140,148,220,0.4);
+      border-color: rgba(180,186,255,0.7);
+    }
+
+    .fchip-check-mark {
+      font-size: 9px;
+      color: rgba(220,224,255,0.95);
+      display: none;
+    }
+
+    .fchip.selected .fchip-check-mark { display: block; }
+
+    .fchip-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.16s;
+    }
+
+    .fchip.selected .fchip-label { color: rgba(210,214,255,0.9); }
+
+    /* Navigation buttons */
+    .intake-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-btn-back {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .nav-btn-back:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.2); }
+    .nav-btn-back:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+
+    .nav-btn-next {
+      font-size: 13px;
+      font-weight: 600;
+      color: #09091a;
+      background: rgba(210,214,255,0.95);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 22px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-next:hover { background: rgba(255,255,255,0.98); }
+    .nav-btn-next:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+
+    .nav-step-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Snapshot output */
+    .snapshot-panel {
+      display: none;
+    }
+
+    .snapshot-panel.visible { display: block; }
+
+    .snapshot-heading {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(140,148,200,0.7);
+      margin-bottom: 20px;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .snapshot-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .snapshot-block-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(140,148,200,0.5);
+      margin-bottom: 12px;
+    }
+
+    .color-row { display: flex; gap: 8px; align-items: flex-start; }
+
+    .color-swatch-group { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .color-swatch-name {
+      font-size: 9px;
+      color: rgba(255,255,255,0.3);
+      font-family: ui-monospace, monospace;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .type-sample { line-height: 1.45; }
+
+    .type-heading-sample {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+
+    .type-body-sample {
+      font-size: 13px;
+      color: rgba(170,178,215,0.7);
+    }
+
+    .type-pairing-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    .motion-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(140,148,220,0.1);
+      border: 1px solid rgba(140,148,220,0.25);
+      border-radius: 999px;
+      padding: 5px 12px;
+      margin-bottom: 8px;
+    }
+
+    .motion-badge-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(200,206,255,0.9);
+    }
+
+    .motion-badge-role {
+      font-size: 11px;
+      color: rgba(140,148,200,0.6);
+    }
+
+    .motion-philosophy-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.55;
+    }
+
+    .sections-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .section-pill {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(200,206,255,0.7);
+      background: rgba(140,148,220,0.1);
+      border: 1px solid rgba(140,148,220,0.2);
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+
+    .section-pill-num {
+      font-size: 9px;
+      color: rgba(140,148,200,0.5);
+      font-family: ui-monospace, monospace;
+      margin-right: 4px;
+    }
+
+    .snapshot-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .snapshot-keyword {
+      font-size: 11px;
+      color: rgba(210,214,255,0.75);
+      background: rgba(140,148,220,0.1);
+      border: 1px solid rgba(140,148,220,0.22);
+      border-radius: 5px;
+      padding: 2px 9px;
+    }
+
+    .snapshot-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .snapshot-restart {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .snapshot-restart:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.2); }
+
+    .snapshot-cta {
+      font-size: 13px;
+      font-weight: 600;
+      color: #09091a;
+      background: rgba(210,214,255,0.95);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 22px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .snapshot-cta:hover { background: #fff; }
+
+    .intake-hint-empty {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      display: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -425,32 +905,42 @@
         animation: none !important;
       }
     }
+
+    @media (max-width: 700px) {
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .snapshot-grid { grid-template-columns: 1fr; }
+      .kchip { min-width: 0; }
+      .intake-inner { padding: 24px 20px 28px; }
+    }
   </style>
 </head>
 <body>
 
   <div class="page-header">
-    <p class="page-title">Built with <code>webdev-powerhouse</code> skill · WEBDEVAI.md stack</p>
+    <p class="page-title">Built with <code>webdev-powerhouse</code> v2.0 · WEBDEVAI.md stack</p>
   </div>
 
   <div class="controls">
     <div class="tab-group">
       <button class="tab-btn active" id="tb-b" onclick="doTab('b')">Basic</button>
       <button class="tab-btn" id="tb-i" onclick="doTab('i')">Improved ✦</button>
+      <button class="tab-btn" id="tb-s" onclick="doTab('s')">Skill Intake ✦</button>
     </div>
     <button class="replay-btn" id="rbtn" onclick="doReplay()">
       ↺ Replay animation
     </button>
   </div>
 
-  <div class="browser-frame">
+  <!-- HERO BROWSER FRAME (Basic + Improved) -->
+  <div class="browser-frame" id="browser-wrap">
     <div class="browser-chrome">
       <div class="browser-dots">
         <div class="dot dot-r"></div>
         <div class="dot dot-y"></div>
         <div class="dot dot-g"></div>
       </div>
-      <div class="url-bar"><span>localhost:3000</span></div>
+      <div class="url-bar"><span id="url-label">localhost:3000</span></div>
     </div>
 
     <!-- BASIC HERO -->
@@ -469,24 +959,19 @@
       <div class="orb" id="o1"></div>
       <div class="orb" id="o2"></div>
       <div class="orb" id="o3"></div>
-
       <div class="hero-content">
         <p id="imp-eyebrow">Creative Agency · Est. 2024</p>
-
         <h1 class="imp-headline">
           <span class="word-line"><span class="iw">We&nbsp;Build</span></span>
           <span class="word-line"><span class="iw">Digital</span></span>
           <span class="word-line"><span class="iw">Experiences</span></span>
         </h1>
-
         <p id="imp-sub">We craft immersive digital experiences that merge bold design with precise engineering — built to convert, built to last.</p>
-
         <div id="imp-cta">
           <button class="btn-primary-imp">See Our Work</button>
           <button class="btn-outline-imp">Get In Touch</button>
         </div>
       </div>
-
       <div id="imp-scroll">
         <span>Scroll</span>
         <div class="scroll-line"></div>
@@ -494,8 +979,293 @@
     </div>
   </div>
 
+  <!-- INTAKE FRAME -->
+  <div class="intake-frame" id="intake-wrap">
+    <div class="intake-orb intake-orb-1"></div>
+    <div class="intake-orb intake-orb-2"></div>
+
+    <div class="intake-inner">
+
+      <!-- Header -->
+      <div class="intake-header">
+        <span class="intake-badge">webdev-powerhouse v2.0</span>
+        <span class="intake-title">Intake · Design System Generator</span>
+      </div>
+
+      <!-- Step indicator -->
+      <div class="step-indicator" id="step-indicator">
+        <div class="step-dot active" id="sd1">
+          <div class="step-dot-circle">1</div>
+          <div class="step-dot-label">Project Type</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="sd2">
+          <div class="step-dot-circle">2</div>
+          <div class="step-dot-label">Style Keywords</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="sd3">
+          <div class="step-dot-circle">3</div>
+          <div class="step-dot-label">Features</div>
+        </div>
+      </div>
+
+      <!-- STEP 1 — Project Type -->
+      <div class="step-panel active" id="step1">
+        <p class="step-heading">What are you building?</p>
+        <p class="step-sub">Select the closest match — this shapes your color palette, typography, and motion philosophy.</p>
+
+        <div class="project-grid">
+          <div class="project-card" onclick="selectType(this,'Portfolio / Personal site')">
+            <div class="project-card-num">01</div>
+            <div class="project-card-title">Portfolio / Personal</div>
+            <div class="project-card-desc">Showcase work, case studies, contact</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'Creative agency site')">
+            <div class="project-card-num">02</div>
+            <div class="project-card-title">Creative Agency</div>
+            <div class="project-card-desc">Services, team, bold aesthetic</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'SaaS landing page')">
+            <div class="project-card-num">03</div>
+            <div class="project-card-title">SaaS Landing Page</div>
+            <div class="project-card-desc">Hero, features, pricing, CTA-driven</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'E-commerce / product')">
+            <div class="project-card-num">04</div>
+            <div class="project-card-title">E-commerce</div>
+            <div class="project-card-desc">Product showcase, cart, conversion</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'Dashboard / admin panel')">
+            <div class="project-card-num">05</div>
+            <div class="project-card-title">Dashboard</div>
+            <div class="project-card-desc">Data tables, charts, dense UI</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'Blog / editorial')">
+            <div class="project-card-num">06</div>
+            <div class="project-card-title">Blog / Editorial</div>
+            <div class="project-card-desc">Content-first, typography-led</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'Web app / tool')">
+            <div class="project-card-num">07</div>
+            <div class="project-card-title">Web App / Tool</div>
+            <div class="project-card-desc">Functional UI, complex interactions</div>
+          </div>
+          <div class="project-card" onclick="selectType(this,'Other')">
+            <div class="project-card-num">08</div>
+            <div class="project-card-title">Something Else</div>
+            <div class="project-card-desc">Describe it and I'll adapt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Style Keywords -->
+      <div class="step-panel" id="step2">
+        <p class="step-heading">Pick your style keywords.</p>
+        <p class="step-sub">Choose 2–4 that fit your vision. You don't need to know the tech — just what feels right.</p>
+
+        <div class="keyword-category">
+          <div class="keyword-category-label">Visual Style</div>
+          <div class="keyword-category-hint">The look and feel of surfaces, color, and depth</div>
+          <div class="keyword-chips">
+            <div class="kchip" onclick="toggleKeyword(this,'Glassmorphism')">
+              <span class="kchip-name">Glassmorphism</span>
+              <span class="kchip-desc">Frosted glass panels with blur</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Dark Luxury')">
+              <span class="kchip-name">Dark Luxury</span>
+              <span class="kchip-desc">Deep black + gold accents</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Aurora Gradient')">
+              <span class="kchip-name">Aurora Gradient</span>
+              <span class="kchip-desc">Moving color orbs on dark canvas</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Brutalism')">
+              <span class="kchip-name">Brutalism</span>
+              <span class="kchip-desc">Raw grids, high contrast, bold type</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Bento Grid')">
+              <span class="kchip-name">Bento Grid</span>
+              <span class="kchip-desc">Asymmetric modular card layouts</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Claymorphism')">
+              <span class="kchip-name">Claymorphism</span>
+              <span class="kchip-desc">Inflated 3D plastic-like UI</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Minimalism')">
+              <span class="kchip-name">Minimalism</span>
+              <span class="kchip-desc">Whitespace, one accent, nothing extra</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Light Editorial')">
+              <span class="kchip-name">Light Editorial</span>
+              <span class="kchip-desc">Airy, cream-white, magazine-style</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="keyword-category">
+          <div class="keyword-category-label">Motion & Animation</div>
+          <div class="keyword-category-hint">How elements enter, move, and respond to interaction</div>
+          <div class="keyword-chips">
+            <div class="kchip" onclick="toggleKeyword(this,'Parallax')">
+              <span class="kchip-name">Parallax</span>
+              <span class="kchip-desc">Elements move at different scroll speeds</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Scroll Scrub')">
+              <span class="kchip-name">Scroll Scrub</span>
+              <span class="kchip-desc">Animation locked to scroll position</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Stagger Entrance')">
+              <span class="kchip-name">Stagger Entrance</span>
+              <span class="kchip-desc">Elements animate in sequence</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Word-line Reveal')">
+              <span class="kchip-name">Word-line Reveal</span>
+              <span class="kchip-desc">Words slide up from hidden container</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Magnetic Hover')">
+              <span class="kchip-name">Magnetic Hover</span>
+              <span class="kchip-desc">Elements pull toward the cursor</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Smooth Scroll')">
+              <span class="kchip-name">Smooth Scroll</span>
+              <span class="kchip-desc">Physics-based scroll inertia (Lenis)</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Clip-path Reveal')">
+              <span class="kchip-name">Clip-path Reveal</span>
+              <span class="kchip-desc">Content exposed by expanding shape</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Page Transition')">
+              <span class="kchip-name">Page Transition</span>
+              <span class="kchip-desc">Animated handoff between routes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="keyword-category">
+          <div class="keyword-category-label">Technical (optional)</div>
+          <div class="keyword-category-hint">Skip these if you're unsure — I'll pick the right tools from your style choices above</div>
+          <div class="keyword-chips">
+            <div class="kchip" onclick="toggleKeyword(this,'GSAP ScrollTrigger')">
+              <span class="kchip-name">GSAP ScrollTrigger</span>
+              <span class="kchip-desc">Scroll animation engine</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'Framer Motion')">
+              <span class="kchip-name">Framer Motion</span>
+              <span class="kchip-desc">React animation variants</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'React Three Fiber')">
+              <span class="kchip-name">React Three Fiber</span>
+              <span class="kchip-desc">3D scenes in React</span>
+            </div>
+            <div class="kchip" onclick="toggleKeyword(this,'GLSL Shader')">
+              <span class="kchip-name">GLSL Shader</span>
+              <span class="kchip-desc">GPU-rendered custom effects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 — Features -->
+      <div class="step-panel" id="step3">
+        <p class="step-heading">Which sections do you need?</p>
+        <p class="step-sub">Pick all that apply — this sets the build order in your Design System Snapshot.</p>
+
+        <div class="feature-grid">
+          <div class="fchip" onclick="toggleFeature(this,'Hero / Above-the-fold')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Hero / Above-the-fold</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Navigation / Header')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Navigation / Header</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Feature / Services cards')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Feature / Services cards</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'About / Team section')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">About / Team section</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Work / Portfolio grid')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Work / Portfolio grid</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Testimonials / Social proof')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Testimonials / Social proof</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Pricing table')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Pricing table</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'CTA / Contact section')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">CTA / Contact section</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Footer')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Footer</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Blog / Article page')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Blog / Article page</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Dashboard / data view')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Dashboard / data view</span>
+          </div>
+          <div class="fchip" onclick="toggleFeature(this,'Onboarding / Auth flow')">
+            <div class="fchip-check"><span class="fchip-check-mark">✓</span></div>
+            <span class="fchip-label">Onboarding / Auth flow</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SNAPSHOT OUTPUT -->
+      <div class="snapshot-panel" id="snapshot-panel">
+        <div class="snapshot-heading">Design System Snapshot</div>
+
+        <div id="snapshot-keywords-row" class="snapshot-keywords"></div>
+
+        <div class="snapshot-grid">
+          <div class="snapshot-block">
+            <div class="snapshot-block-label">Color Direction</div>
+            <div class="color-row" id="color-row"></div>
+          </div>
+          <div class="snapshot-block">
+            <div class="snapshot-block-label">Typography</div>
+            <div class="type-sample" id="type-sample"></div>
+          </div>
+          <div class="snapshot-block">
+            <div class="snapshot-block-label">Motion Philosophy</div>
+            <div id="motion-block"></div>
+          </div>
+          <div class="snapshot-block">
+            <div class="snapshot-block-label">Sections — Build Order</div>
+            <div class="sections-list" id="sections-list"></div>
+          </div>
+        </div>
+
+        <div class="snapshot-actions">
+          <button class="snapshot-restart" onclick="restartIntake()">← Start over</button>
+          <button class="snapshot-cta" onclick="doTab('i')">See the hero demo →</button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="intake-nav" id="intake-nav">
+        <button class="nav-btn-back" id="nav-back" onclick="intakeBack()" disabled>← Back</button>
+        <span class="nav-step-hint" id="nav-hint">Select a project type to continue</span>
+        <button class="nav-btn-next" id="nav-next" onclick="intakeNext()" disabled>Next →</button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ANNOTATIONS -->
-  <div class="annotations">
+  <div class="annotations" id="annotations-wrap">
     <p class="annotations-label">What <code>webdev-powerhouse</code> added:</p>
     <div class="annotation-grid">
       <div class="annotation-card">
@@ -518,33 +1288,50 @@
   </div>
 
   <script>
+    /* ── TAB SWITCHER ── */
     function doTab(t) {
-      var vb = document.getElementById('vb');
-      var vi = document.getElementById('vi');
+      var bw = document.getElementById('browser-wrap');
+      var iw = document.getElementById('intake-wrap');
+      var aw = document.getElementById('annotations-wrap');
+      var rb = document.getElementById('rbtn');
       var tbb = document.getElementById('tb-b');
       var tbi = document.getElementById('tb-i');
-      var rb = document.getElementById('rbtn');
+      var tbs = document.getElementById('tb-s');
+      var vb = document.getElementById('vb');
+      var vi = document.getElementById('vi');
+
+      tbb.classList.remove('active');
+      tbi.classList.remove('active');
+      tbs.classList.remove('active');
+      bw.style.display = 'none';
+      iw.style.display = 'none';
+      aw.style.display = 'none';
+      rb.style.display = 'none';
 
       if (t === 'b') {
+        bw.style.display = 'block';
+        aw.style.display = 'block';
         vb.style.display = 'flex';
         vi.style.display = 'none';
         tbb.classList.add('active');
-        tbi.classList.remove('active');
-        rb.style.display = 'none';
-      } else {
+      } else if (t === 'i') {
+        bw.style.display = 'block';
+        aw.style.display = 'block';
         vb.style.display = 'none';
         vi.style.display = 'flex';
         tbi.classList.add('active');
-        tbb.classList.remove('active');
         rb.style.display = 'flex';
         doReplay();
         initParallax();
+      } else {
+        iw.style.display = 'block';
+        tbs.classList.add('active');
       }
     }
 
+    /* ── HERO ANIMATION ── */
     function doReplay() {
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       var eyebrow = document.getElementById('imp-eyebrow');
       var words = document.querySelectorAll('.iw');
       var sub = document.getElementById('imp-sub');
@@ -581,55 +1368,243 @@
       }
 
       anim(eyebrow, { opacity: '1', transform: 'translateY(0px)' }, 80, 0.6);
-
       words.forEach(function(w, i) {
         setTimeout(function() {
           w.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)';
           w.style.transform = 'translateY(0%)';
         }, 200 + i * 115);
       });
-
       anim(sub, { opacity: '1', transform: 'translateY(0px)' }, 590, 0.65);
       anim(cta, { opacity: '1', transform: 'translateY(0px)' }, 760, 0.5);
       anim(scroll, { opacity: '1' }, 940, 0.4);
     }
 
     var parallaxReady = false;
-
     function initParallax() {
       if (parallaxReady) return;
       parallaxReady = true;
-
       var hero = document.getElementById('vi');
       var o1 = document.getElementById('o1');
       var o2 = document.getElementById('o2');
       if (!hero || !o1 || !o2) return;
-
-      var tx1 = 0, ty1 = 0, tx2 = 0, ty2 = 0;
-      var cx1 = 0, cy1 = 0, cx2 = 0, cy2 = 0;
-
+      var tx1=0,ty1=0,tx2=0,ty2=0,cx1=0,cy1=0,cx2=0,cy2=0;
       hero.addEventListener('mousemove', function(e) {
         var r = hero.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) / r.width;
-        var y = (e.clientY - r.top - r.height / 2) / r.height;
-        tx1 = x * 60; ty1 = y * 42;
-        tx2 = -x * 36; ty2 = -y * 28;
+        var x = (e.clientX - r.left - r.width/2) / r.width;
+        var y = (e.clientY - r.top - r.height/2) / r.height;
+        tx1 = x*60; ty1 = y*42; tx2 = -x*36; ty2 = -y*28;
       });
-
-      hero.addEventListener('mouseleave', function() {
-        tx1 = 0; ty1 = 0; tx2 = 0; ty2 = 0;
-      });
-
-      function lerp(a, b, t) { return a + (b - a) * t; }
-
+      hero.addEventListener('mouseleave', function() { tx1=0;ty1=0;tx2=0;ty2=0; });
+      function lerp(a,b,t){return a+(b-a)*t;}
       function tick() {
-        cx1 = lerp(cx1, tx1, 0.045); cy1 = lerp(cy1, ty1, 0.045);
-        cx2 = lerp(cx2, tx2, 0.028); cy2 = lerp(cy2, ty2, 0.028);
-        o1.style.transform = 'translate(' + cx1.toFixed(1) + 'px,' + cy1.toFixed(1) + 'px)';
-        o2.style.transform = 'translate(' + cx2.toFixed(1) + 'px,' + cy2.toFixed(1) + 'px)';
+        cx1=lerp(cx1,tx1,0.045); cy1=lerp(cy1,ty1,0.045);
+        cx2=lerp(cx2,tx2,0.028); cy2=lerp(cy2,ty2,0.028);
+        o1.style.transform='translate('+cx1.toFixed(1)+'px,'+cy1.toFixed(1)+'px)';
+        o2.style.transform='translate('+cx2.toFixed(1)+'px,'+cy2.toFixed(1)+'px)';
         requestAnimationFrame(tick);
       }
       tick();
+    }
+
+    /* ── INTAKE STATE ── */
+    var currentStep = 1;
+    var selectedType = null;
+    var selectedKeywords = [];
+    var selectedFeatures = [];
+
+    function selectType(el, type) {
+      document.querySelectorAll('.project-card').forEach(function(c) { c.classList.remove('selected'); });
+      el.classList.add('selected');
+      selectedType = type;
+      document.getElementById('nav-next').disabled = false;
+      document.getElementById('nav-hint').textContent = '"' + type + '" selected';
+    }
+
+    function toggleKeyword(el, kw) {
+      el.classList.toggle('selected');
+      if (el.classList.contains('selected')) {
+        selectedKeywords.push(kw);
+      } else {
+        selectedKeywords = selectedKeywords.filter(function(k) { return k !== kw; });
+      }
+      var count = selectedKeywords.length;
+      document.getElementById('nav-hint').textContent = count === 0 ? 'Select at least one keyword' : count + ' selected';
+      document.getElementById('nav-next').disabled = count === 0;
+    }
+
+    function toggleFeature(el, feat) {
+      el.classList.toggle('selected');
+      if (el.classList.contains('selected')) {
+        selectedFeatures.push(feat);
+      } else {
+        selectedFeatures = selectedFeatures.filter(function(f) { return f !== feat; });
+      }
+      var count = selectedFeatures.length;
+      document.getElementById('nav-next').textContent = 'Generate Snapshot ✦';
+      document.getElementById('nav-hint').textContent = count === 0 ? 'Skip to generate, or pick sections' : count + ' selected';
+      document.getElementById('nav-next').disabled = false;
+    }
+
+    function setStep(n) {
+      document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('step' + n).classList.add('active');
+      currentStep = n;
+
+      var sd1 = document.getElementById('sd1');
+      var sd2 = document.getElementById('sd2');
+      var sd3 = document.getElementById('sd3');
+      [sd1, sd2, sd3].forEach(function(el) { el.classList.remove('active','done'); });
+
+      if (n === 1) {
+        sd1.classList.add('active');
+        document.getElementById('nav-back').disabled = true;
+        document.getElementById('nav-next').disabled = !selectedType;
+        document.getElementById('nav-next').textContent = 'Next →';
+        document.getElementById('nav-hint').textContent = selectedType ? '"' + selectedType + '" selected' : 'Select a project type to continue';
+      } else if (n === 2) {
+        sd1.classList.add('done');
+        sd2.classList.add('active');
+        document.getElementById('nav-back').disabled = false;
+        document.getElementById('nav-next').disabled = selectedKeywords.length === 0;
+        document.getElementById('nav-next').textContent = 'Next →';
+        document.getElementById('nav-hint').textContent = selectedKeywords.length > 0 ? selectedKeywords.length + ' selected' : 'Select at least one keyword';
+      } else if (n === 3) {
+        sd1.classList.add('done');
+        sd2.classList.add('done');
+        sd3.classList.add('active');
+        document.getElementById('nav-back').disabled = false;
+        document.getElementById('nav-next').disabled = false;
+        document.getElementById('nav-next').textContent = 'Generate Snapshot ✦';
+        document.getElementById('nav-hint').textContent = selectedFeatures.length > 0 ? selectedFeatures.length + ' selected' : 'Skip to generate, or pick sections';
+      }
+    }
+
+    function intakeNext() {
+      if (currentStep < 3) {
+        setStep(currentStep + 1);
+      } else {
+        generateSnapshot();
+      }
+    }
+
+    function intakeBack() {
+      if (currentStep > 1) setStep(currentStep - 1);
+    }
+
+    function restartIntake() {
+      selectedType = null;
+      selectedKeywords = [];
+      selectedFeatures = [];
+      document.querySelectorAll('.project-card').forEach(function(el) { el.classList.remove('selected'); });
+      document.querySelectorAll('.kchip').forEach(function(el) { el.classList.remove('selected'); });
+      document.querySelectorAll('.fchip').forEach(function(el) { el.classList.remove('selected'); });
+      document.getElementById('snapshot-panel').classList.remove('visible');
+      document.getElementById('step-indicator').style.display = 'flex';
+      document.getElementById('intake-nav').style.display = 'flex';
+      setStep(1);
+    }
+
+    /* ── SNAPSHOT GENERATOR ── */
+    var COLOR_MAP = {
+      'Aurora Gradient':  [{bg:'#1a0a3a',label:'bg'},{bg:'#7b35d4',label:'accent'},{bg:'#d44fa0',label:'glow'}],
+      'Dark Luxury':      [{bg:'#100c06',label:'bg'},{bg:'#c8a85c',label:'gold'},{bg:'#f5f0e8',label:'text'}],
+      'Glassmorphism':    [{bg:'#0e1828',label:'bg'},{bg:'#4a9abe',label:'glass'},{bg:'#e8f4ff',label:'text'}],
+      'Brutalism':        [{bg:'#f5f0e8',label:'bg'},{bg:'#d93a1e',label:'accent'},{bg:'#111111',label:'text'}],
+      'Bento Grid':       [{bg:'#0d0d1a',label:'bg'},{bg:'#6b45e8',label:'accent'},{bg:'#e8e6ff',label:'text'}],
+      'Claymorphism':     [{bg:'#1a1435',label:'bg'},{bg:'#a06bff',label:'clay'},{bg:'#ffe8f8',label:'text'}],
+      'Minimalism':       [{bg:'#fafaf9',label:'bg'},{bg:'#888888',label:'muted'},{bg:'#111111',label:'text'}],
+      'Light Editorial':  [{bg:'#f8f5f0',label:'bg'},{bg:'#c8a85c',label:'accent'},{bg:'#1a1a1a',label:'text'}],
+    };
+
+    var TYPE_MAP = {
+      'Portfolio / Personal site': { heading:'Clash Display', body:'Inter', note:'Display contrast: editorial weight for headlines, neutral Inter for all body text.' },
+      'Creative agency site':      { heading:'Neue Montreal', body:'Inter', note:'Grotesque heading pairs with workman Inter — creative without being precious.' },
+      'SaaS landing page':         { heading:'Cal Sans',      body:'Inter', note:'Friendly rounded heading softens the tech stack — still converts at scale.' },
+      'E-commerce / product':      { heading:'Canela',        body:'Inter', note:'Serif heading adds premium perception — Inter keeps the UI scannable.' },
+      'Dashboard / admin panel':   { heading:'Geist',         body:'Inter', note:'Both weights from the same family — consistency wins in data-dense layouts.' },
+      'Blog / editorial':          { heading:'Lora',          body:'Inter', note:'Transitional serif heading lends authority — Inter body is reading-optimized.' },
+      'Web app / tool':            { heading:'Geist',         body:'Inter', note:'Monospaced accents with Geist — functional, modern, familiar to power users.' },
+      'Other':                     { heading:'Inter',         body:'Inter', note:'Defaulting to Inter — versatile for any direction, can swap once you decide.' },
+    };
+
+    var MOTION_MAP = {
+      creative:  { name: 'Jhey Tompkins', role: 'Creative / Surprising', desc: 'Unexpected motion as communication — not just decoration. Each interaction earns its moment and surprises without gimmickry.' },
+      precision: { name: 'Jakub Krehel',  role: 'Precision / Stagger',   desc: 'Layered reveals with exact timing relationships. Every element enters in a deliberate sequence — stagger as a structural tool, not a flourish.' },
+      restraint: { name: 'Emil Kowalski', role: 'Restraint / Calm',       desc: 'Motion only when it has a job. Opacity and transform changes that earn attention without demanding it.' },
+    };
+
+    function pickMotionPhilosophy(keywords) {
+      var creative = ['Clip-path Reveal','Magnetic Hover','GLSL Shader','React Three Fiber','Char-by-char'];
+      var precision = ['Stagger Entrance','Word-line Reveal','Scroll Scrub','GSAP ScrollTrigger','Parallax'];
+      var s = 0, c = 0, p = 0;
+      keywords.forEach(function(k) {
+        if (creative.indexOf(k) > -1) c++;
+        if (precision.indexOf(k) > -1) p++;
+      });
+      if (c >= p && c > 0) return MOTION_MAP.creative;
+      if (p > 0) return MOTION_MAP.precision;
+      return MOTION_MAP.restraint;
+    }
+
+    function pickColors(keywords) {
+      for (var i = 0; i < keywords.length; i++) {
+        if (COLOR_MAP[keywords[i]]) return COLOR_MAP[keywords[i]];
+      }
+      return [{bg:'#09091a',label:'bg'},{bg:'#7b55d4',label:'accent'},{bg:'#e8e6ff',label:'text'}];
+    }
+
+    function generateSnapshot() {
+      var colors = pickColors(selectedKeywords);
+      var type = TYPE_MAP[selectedType] || TYPE_MAP['Other'];
+      var motion = pickMotionPhilosophy(selectedKeywords);
+
+      // Keywords row
+      var kwRow = document.getElementById('snapshot-keywords-row');
+      kwRow.innerHTML = '';
+      (selectedKeywords.length > 0 ? selectedKeywords : ['No keywords selected']).forEach(function(k) {
+        var s = document.createElement('span');
+        s.className = 'snapshot-keyword';
+        s.textContent = k;
+        kwRow.appendChild(s);
+      });
+
+      // Color swatches
+      var cr = document.getElementById('color-row');
+      cr.innerHTML = '';
+      colors.forEach(function(c) {
+        var g = document.createElement('div');
+        g.className = 'color-swatch-group';
+        g.innerHTML = '<div class="color-swatch" style="background:' + c.bg + '"></div><div class="color-swatch-name">' + c.label + '<br>' + c.bg + '</div>';
+        cr.appendChild(g);
+      });
+
+      // Typography
+      document.getElementById('type-sample').innerHTML =
+        '<div class="type-heading-sample">' + type.heading + '</div>' +
+        '<div class="type-body-sample">' + type.body + ' for body</div>' +
+        '<div class="type-pairing-note">' + type.note + '</div>';
+
+      // Motion philosophy
+      document.getElementById('motion-block').innerHTML =
+        '<div class="motion-badge"><span class="motion-badge-name">' + motion.name + '</span><span class="motion-badge-role">· ' + motion.role + '</span></div>' +
+        '<div class="motion-philosophy-desc">' + motion.desc + '</div>';
+
+      // Sections
+      var sl = document.getElementById('sections-list');
+      sl.innerHTML = '';
+      var features = selectedFeatures.length > 0 ? selectedFeatures : ['Hero / Above-the-fold','Navigation / Header','Feature / Services cards','CTA / Contact section','Footer'];
+      features.forEach(function(f, i) {
+        var p = document.createElement('div');
+        p.className = 'section-pill';
+        p.innerHTML = '<span class="section-pill-num">0' + (i+1) + '</span>' + f;
+        sl.appendChild(p);
+      });
+
+      // Show snapshot, hide steps
+      document.getElementById('step-indicator').style.display = 'none';
+      document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('intake-nav').style.display = 'none';
+      document.getElementById('snapshot-panel').classList.add('visible');
     }
   </script>
 </body>
